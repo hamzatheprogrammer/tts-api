@@ -4,9 +4,10 @@ const client = require('soundoftext-js');
  
 
 
-app.get('/speak/text=:text', (req, res) => {
+app.get('/speak/text=:text/lang=:lang', (req, res) => {
     const text = req.params.text;
-    client.sounds.create({ text: text, voice: 'en-US' })
+    const lang = req.params.lang;
+    client.sounds.create({ text: text, voice: lang })
   .then(soundUrl => {
     res.json({
     "status": 200,
